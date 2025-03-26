@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class UpdateProductRequest extends FormRequest
 {
@@ -11,7 +12,8 @@ class UpdateProductRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        // Temporarily allow all requests
+        return true;
     }
 
     /**
@@ -22,7 +24,19 @@ class UpdateProductRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'name' => ['required', 'string', 'max:128'],
+            'description' => ['nullable', 'string', 'max:255'],
+            'price' => ['required', 'numeric', 'min:0.01'],
+            'vatRate' => ['required', 'numeric', 'min:0.00', 'max:1.00'],
+            'tag.name' => ['nullable', 'string', 'max:128'],
+            'tag.color' => ['nullable', Rule::in(['red', 'blue', 'green', 'yellow', 'purple', 'orange', 'black'])],
         ];
+    }
+
+    protected function prepareForValidation(): void
+    {
+        $this->merge([
+            'vat_rate' => $this->vatRate,
+        ]);
     }
 }
