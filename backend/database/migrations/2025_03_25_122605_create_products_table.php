@@ -17,7 +17,8 @@ return new class extends Migration
             $table->string('description')->nullable();
             $table->decimal('price', 8, 2);
             $table->decimal('vat_rate', 3, 2)->default(0.00)->check('vat_rate >= 0.00 AND vat_rate <= 1.00');
-            $table->integer('tag_id')->nullable();
+            $table->unsignedBigInteger('tag_id')->nullable();
+            $table->foreign('tag_id')->references('id')->on('tags')->onDelete('set null');
             $table->timestamps();
         });
     }
