@@ -17,7 +17,7 @@ class ProductSeeder extends Seeder
         $tags = Tag::all();
 
         Product::factory()
-            ->count(30)
+            ->count(10)
             ->create()
             ->each(function ($product) use ($tags) {
                 if ($tags->isNotEmpty()) {

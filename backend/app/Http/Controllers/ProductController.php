@@ -17,7 +17,7 @@ class ProductController extends Controller
      */
     public function index(Request $request)
     {
-        return new ProductCollection(Product::with('tag')->get());        
+        return new ProductCollection(Product::with('tag')->get());
     }
 
     /**
