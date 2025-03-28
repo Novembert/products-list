@@ -1,7 +1,13 @@
 <template>
   <div class="bg-gray-50 h-full">
-    <main>
-      <h2 v-if="breadcrumb" class="mb-8">
+    <header class="h-[7.5vh] py-2 px-4 bg-white shadow-md flex items-center justify-between">
+      Some menu
+    </header>
+    <main class="p-4">
+      <h2
+        v-if="breadcrumb"
+        class="mb-4 font-medium text-gray-500"
+      >
         {{ t(breadcrumb) }}
       </h2>
       <RouterView />

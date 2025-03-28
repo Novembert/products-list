@@ -5,6 +5,18 @@
     "delete": "Slet",
     "save": "Gem"
   },
+  "validations": {
+    "required": "{property} er påkrævet"
+  },
+  "colors": {
+    "red": "Rød",
+    "blue": "Blå",
+    "green": "Grøn",
+    "yellow": "Gul",
+    "purple": "Lilla",
+    "orange": "Orange",
+    "black": "Sort"
+  },
   "productsForSale": {
     "title": "Salgsprodukter",
     "dialogProductProperties": {
@@ -22,7 +34,7 @@
     "editOrDeleteProductDialog": {
       "title": "Rediger produkt"
     },
-    "allProducts": "Alle produkter {count}",
+    "allProducts": "Alle produkter ({count})",
     "products": {
       "productId": "Produkt ID",
       "description": "Beskrivelse",

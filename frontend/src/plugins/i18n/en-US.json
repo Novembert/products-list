@@ -5,6 +5,18 @@
     "delete": "Delete",
     "save": "Save"
   },
+  "validations": {
+    "required": "{property} is required"
+  },
+  "colors": {
+    "red": "Red",
+    "blue": "Blue",
+    "green": "Green",
+    "yellow": "Yellow",
+    "purple": "Purple",
+    "orange": "Orange",
+    "black": "Black"
+  },
   "productsForSale": {
     "title": "Products for Sale",
     "dialogProductProperties": {
@@ -22,7 +34,7 @@
     "editOrDeleteProductDialog": {
       "title": "Edit Product"
     },
-    "allProducts": "All Products {count}",
+    "allProducts": "All Products ({count})",
     "products": {
       "productId": "Product ID",
       "description": "Description",

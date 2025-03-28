@@ -1,4 +1,4 @@
-import type { Tag } from './Tag'
+import type { Tag, TagColor } from './Tag'
 
 export interface Product {
   id: number
@@ -11,18 +11,18 @@ export interface Product {
   tag?: Tag
 }
 
-export interface CreateProductRequest {
+export interface CreateProductPayload {
   name: string
   description?: string
-  price: string
-  vatRate: string
+  price: number
+  vatRate: number
   tag?: {
     name: string
-    color: string
+    color: TagColor
   }
 }
 
-export type UpdateProductRequest = CreateProductRequest & {
+export type UpdateProductPayload = CreateProductPayload & {
   id: number
   createdAt: string
   updatedAt: string
