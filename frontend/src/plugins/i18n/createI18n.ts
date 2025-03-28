@@ -22,4 +22,4 @@ export const registerI18nInstance = (app: App) => {
   const i18n = createI18nInstance()
   app.use(i18n)
   return i18n
-};
+}

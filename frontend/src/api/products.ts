@@ -1,13 +1,13 @@
-import type { Product } from "@/types/models/Product";
-import { mockProducts } from "./mocks/products";
+import type { Product } from '@/types/models/Product'
+import { mockProducts } from './mocks/products'
 
 export const getProducts = async (): Promise<Product[]> => {
   // return await request({
   //   method: 'GET',
   //   url: '/products'
   // });
-  setTimeout(() => {}, 1000);
-  return Promise.resolve(mockProducts);
+  setTimeout(() => {}, 1000)
+  return Promise.resolve(mockProducts)
 }
 
 export const getProduct = async (id: number): Promise<Product> => {
@@ -15,8 +15,8 @@ export const getProduct = async (id: number): Promise<Product> => {
   //   method: 'GET',
   //   url: `/products/${id}`
   // });
-  setTimeout(() => {}, 1000);
-  return Promise.resolve(mockProducts.find(product => product.id === id) as Product);
+  setTimeout(() => {}, 1000)
+  return Promise.resolve(mockProducts.find((product) => product.id === id) as Product)
 }
 
 export const createProduct = async (product: Product): Promise<Product> => {
@@ -25,13 +25,13 @@ export const createProduct = async (product: Product): Promise<Product> => {
   //   url: '/products',
   //   data: product
   // });
-  setTimeout(() => {}, 1000);
+  setTimeout(() => {}, 1000)
   return Promise.resolve({
     ...product,
-    id: Math.max(...mockProducts.map(p => p.id)) + 1,
+    id: Math.max(...mockProducts.map((p) => p.id)) + 1,
     createdAt: new Date().toISOString(),
-    updatedAt: new Date().toISOString()
-  });
+    updatedAt: new Date().toISOString(),
+  })
 }
 
 export const updateProduct = async (product: Product): Promise<Product> => {
@@ -40,8 +40,8 @@ export const updateProduct = async (product: Product): Promise<Product> => {
   //   url: `/products/${product.id}`,
   //   data: product
   // });
-  setTimeout(() => {}, 1000);
-  return Promise.resolve(product);
+  setTimeout(() => {}, 1000)
+  return Promise.resolve(product)
 }
 
 export const deleteProduct = async (id: number): Promise<void> => {
@@ -49,6 +49,6 @@ export const deleteProduct = async (id: number): Promise<void> => {
   //   method: 'DELETE',
   //   url: `/products/${id}`
   // });
-  setTimeout(() => {}, 1000);
-  return Promise.resolve();
+  setTimeout(() => {}, 1000)
+  return Promise.resolve()
 }

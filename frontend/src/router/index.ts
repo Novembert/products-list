@@ -3,7 +3,7 @@ import { createRouter, createWebHashHistory } from 'vue-router'
 
 declare module 'vue-router' {
   interface RouteMeta {
-    breadcrumb?: string;
+    breadcrumb?: string
   }
 }
 
@@ -20,19 +20,19 @@ const router = createRouter({
           // This could display some kind of welcome dashboard, but currently we just have the products page
           name: RouteNames.Home,
           redirect: {
-            name: RouteNames.Products
-          }
+            name: RouteNames.Products,
+          },
         },
         {
           path: '/products',
           name: RouteNames.Products,
           meta: {
-            breadcrumb: 'productsForSale.title' 
+            breadcrumb: 'productsForSale.title',
           },
           component: () => import('@/modules/products/views/ProductsView.vue'),
-        }
-      ]
-    }
+        },
+      ],
+    },
   ],
 })
 

@@ -1,4 +1,3 @@
-
 export enum TagColor {
   Red = 'red',
   Blue = 'blue',
@@ -6,11 +5,11 @@ export enum TagColor {
   Yellow = 'yellow',
   Purple = 'purple',
   Orange = 'orange',
-  Black = 'black'
+  Black = 'black',
 }
 
 export interface Tag {
-  id: number;
-  name: string;
-  color: TagColor;
+  id: number
+  name: string
+  color: TagColor
 }
