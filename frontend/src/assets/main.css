@@ -1,0 +1,10 @@
+@import "tailwindcss";
+@import "tailwindcss-primeui";
+
+:root {
+  font-family: Inter, sans-serif;
+}
+
+html, body, #app {
+  height: 100%;
+}

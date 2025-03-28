@@ -1,0 +1,35 @@
+{
+  "global": {
+    "create": "Opret",
+    "cancel": "Annuller",
+    "delete": "Slet",
+    "save": "Gem"
+  },
+  "productsForSale": {
+    "title": "Salgsprodukter",
+    "dialogProductProperties": {
+      "name": "Navn",
+      "description": "Beskrivelse",
+      "price": "Pris",
+      "vatRate": "Momssats %",
+      "tagName": "Tagnavn",
+      "tagColor": "Tagfarve"
+    },
+    "createProductDialog": {
+      "cta": "Opret produkt",
+      "title": "Opret produkt"
+    },
+    "editOrDeleteProductDialog": {
+      "title": "Rediger produkt"
+    },
+    "allProducts": "Alle produkter {count}",
+    "products": {
+      "productId": "Produkt ID",
+      "description": "Beskrivelse",
+      "name": "Navn",
+      "price": "Pris",
+      "vatRate": "Momssats",
+      "tag": "Tag"
+    }
+  }
+}

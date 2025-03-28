@@ -5,7 +5,10 @@ import Aura from '@primeuix/themes/aura';
 export const usePrimeVue = (app: App) => {
   app.use(PrimeVue, {
     theme: {
-        preset: Aura
+      preset: Aura,
+      options: {
+        darkModeSelector: false
+      }
     }
   });
 };

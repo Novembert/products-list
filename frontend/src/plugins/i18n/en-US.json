@@ -1,0 +1,35 @@
+{
+  "global": {
+    "create": "Create",
+    "cancel": "Cancel",
+    "delete": "Delete",
+    "save": "Save"
+  },
+  "productsForSale": {
+    "title": "Products for Sale",
+    "dialogProductProperties": {
+      "name": "Name",
+      "description": "Description",
+      "price": "Price",
+      "vatRate": "VAT Rate %",
+      "tagName": "Tag Name",
+      "tagColor": "Tag Color"
+    },
+    "createProductDialog": {
+      "cta": "Create Product",
+      "title": "Create Product"
+    },
+    "editOrDeleteProductDialog": {
+      "title": "Edit Product"
+    },
+    "allProducts": "All Products {count}",
+    "products": {
+      "productId": "Product ID",
+      "description": "Description",
+      "name": "Name",
+      "price": "Price",
+      "vatRate": "VAT Rate",
+      "tag": "Tag"
+    }
+  }
+}
