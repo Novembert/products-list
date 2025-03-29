@@ -89,7 +89,7 @@ export const mockProducts: Product[] = [
       id: 3,
       name: 'Other Tag',
       color: TagColor.Orange,
-    }
+    },
   },
   {
     id: 9,
@@ -153,5 +153,5 @@ export const mockProducts: Product[] = [
     vatRate: '0.25',
     createdAt: new Date().toISOString(),
     updatedAt: new Date().toISOString(),
-  }
+  },
 ]

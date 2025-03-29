@@ -1,7 +1,7 @@
-import { vi } from "vitest";
+import { vi } from 'vitest'
 
-vi.mock('axios', async importOriginal => {
-  const original = await importOriginal<typeof import('axios')>();
+vi.mock('axios', async (importOriginal) => {
+  const original = await importOriginal<typeof import('axios')>()
   return {
     ...original,
     default: {
@@ -15,6 +15,6 @@ vi.mock('axios', async importOriginal => {
         request: { use: vi.fn(), eject: vi.fn() },
         response: { use: vi.fn(), eject: vi.fn() },
       },
-    }
-  };
+    },
+  }
 })

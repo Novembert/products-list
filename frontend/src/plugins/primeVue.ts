@@ -22,8 +22,8 @@ export const usePrimeVue = (app: App) => {
         header: '!border-none',
       },
       column: {
-        headercell: 'whitespace-nowrap'
-      }
+        headercell: 'whitespace-nowrap',
+      },
     },
     theme: {
       preset: Aura,

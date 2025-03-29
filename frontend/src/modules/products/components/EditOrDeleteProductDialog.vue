@@ -6,9 +6,7 @@
     <template #header>
       {{ t('productsForSale.editOrDeleteProductDialog.title') }}
     </template>
-    <ProductForm
-      v-model="updatedProduct"
-    />
+    <ProductForm v-model="updatedProduct" />
     <template #footer>
       <Button
         severity="danger"

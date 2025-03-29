@@ -108,12 +108,12 @@ const tagColorOptions = Object.values(TagColor).map((color) => ({
 const rules = {
   name: { required, $autoDirty: true },
   price: { required, $autoDirty: true },
-  vatRate: { 
+  vatRate: {
     required: helpers.withMessage(
-      t('validations.required', { property: t('productsForSale.products.vatRate')}), 
-      required
-    ), 
-    $autoDirty: true 
+      t('validations.required', { property: t('productsForSale.products.vatRate') }),
+      required,
+    ),
+    $autoDirty: true,
   },
 }
 

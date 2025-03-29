@@ -6,12 +6,12 @@
 </template>
 
 <script setup lang="ts">
-import { TagColor, type Tag as TagModel } from '@/types/models/Tag';
-import Tag from 'primevue/tag';
+import { TagColor, type Tag as TagModel } from '@/types/models/Tag'
+import Tag from 'primevue/tag'
 
 const props = defineProps<{
-  tag: TagModel;
-}>();
+  tag: TagModel
+}>()
 
 const tagColorToClasses: Record<TagColor, string> = {
   [TagColor.Red]: '!bg-red-200 !text-red-700',
@@ -21,5 +21,5 @@ const tagColorToClasses: Record<TagColor, string> = {
   [TagColor.Purple]: '!bg-purple-200 !text-purple-700',
   [TagColor.Orange]: '!bg-orange-200 !text-orange-700',
   [TagColor.Black]: '!bg-gray-200 !text-gray-700',
-};
+}
 </script>

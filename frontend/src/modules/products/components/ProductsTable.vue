@@ -55,9 +55,7 @@
         />
       </template>
     </Column>
-    <Column
-      class="w-0"
-    >
+    <Column class="w-0">
       <template #body>
         <i class="pi pi-chevron-right"></i>
       </template>
