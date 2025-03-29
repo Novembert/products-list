@@ -2,7 +2,7 @@ import ProductsView from "./ProductsView.vue";
 import { shallowMount, flushPromises, VueWrapper } from "@vue/test-utils";
 import { describe, it, expect, vi } from "vitest";
 import * as productsApi from "@/api/products";
-import { mockProducts } from "@/api/mocks/products";
+import { mockProducts } from "@/__mocks__/apiData/products";
 
 const wrapperFactory = async (): Promise<VueWrapper<any>> => {
   const wrapper = shallowMount(ProductsView);

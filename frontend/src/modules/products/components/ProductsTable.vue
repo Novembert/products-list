@@ -82,7 +82,7 @@ const productsCount = computed(() => props.products.length)
 const tableItems = computed<TableItem[]>(() => {
   return props.products.map((product) => ({
     ...product,
-    formattedVatRate: `${Number(product.vatRate) * 100}%`,
+    formattedVatRate: `${(Number(product.vatRate) * 100).toFixed()}%`,
     product: product,
   }))
 })

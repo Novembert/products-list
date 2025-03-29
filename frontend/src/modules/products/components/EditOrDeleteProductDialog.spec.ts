@@ -3,7 +3,7 @@ import { shallowMount, flushPromises, VueWrapper } from "@vue/test-utils";
 import { describe, it, expect, vi } from "vitest";
 import * as productsApi from "@/api/products";
 import type { Product } from "@/types/models/Product";
-import { mockProduct } from "@/api/mocks/products";
+import { mockProduct } from "@/__mocks__/apiData/products";
 
 const wrapperFactory = async ({
   product

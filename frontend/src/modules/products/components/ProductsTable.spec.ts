@@ -2,7 +2,7 @@ import type { Product } from "@/types/models/Product";
 import ProductsTable from "./ProductsTable.vue";
 import { shallowMount, flushPromises, VueWrapper } from "@vue/test-utils";
 import { describe, it, expect, vi } from "vitest";
-import { mockProducts } from "@/api/mocks/products";
+import { mockProducts } from "@/__mocks__/apiData/products";
 
 const wrapperFactory = async ({
   products = mockProducts,
