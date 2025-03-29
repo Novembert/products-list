@@ -32,7 +32,7 @@
       required
     >
       <InputNumber
-        v-model="v$.vatRate.$model"
+        v-model="vatRate"
         mode="decimal"
         suffix="%"
         :useGrouping="false"
@@ -66,6 +66,7 @@ import { useValidation } from '@/plugins/validation'
 import { useVuelidate } from '@vuelidate/core'
 import type { CreateProductPayload, UpdateProductPayload } from '@/types/models/Product'
 import { computed, ref, watch } from 'vue'
+import { helpers } from '@vuelidate/validators'
 
 const { t } = useI18n()
 const { required, getFirstErrorMessage } = useValidation()
@@ -107,7 +108,13 @@ const tagColorOptions = Object.values(TagColor).map((color) => ({
 const rules = {
   name: { required, $autoDirty: true },
   price: { required, $autoDirty: true },
-  vatRate: { required, $autoDirty: true },
+  vatRate: { 
+    required: helpers.withMessage(
+      t('validations.required', { property: t('productsForSale.products.vatRate')}), 
+      required
+    ), 
+    $autoDirty: true 
+  },
 }
 
 const v$ = useVuelidate(rules, formData)

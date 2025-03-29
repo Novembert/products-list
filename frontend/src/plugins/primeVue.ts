@@ -6,8 +6,8 @@ export const usePrimeVue = (app: App) => {
   app.use(PrimeVue, {
     pt: {
       dialog: {
-        root: 'w-full h-[92.5vh] !max-h-[92.5vh] overflow-hidden',
-        mask: '!items-end',
+        root: 'max-md:w-full md:min-w-128 max-md:h-[92.5vh] max-md:!max-h-[92.5vh] overflow-hidden',
+        mask: 'max-md:!items-end md:bg-black/50',
         header: 'text-xl font-bold',
         content: 'grow',
       },
@@ -19,8 +19,11 @@ export const usePrimeVue = (app: App) => {
         tablecontainer: 'px-3',
         tbody: '[&_tr.body-row:last-child_>_td]:!border-b-0',
         bodyRow: 'body-row',
-        header: '!border-none'
+        header: '!border-none',
       },
+      column: {
+        headercell: 'whitespace-nowrap'
+      }
     },
     theme: {
       preset: Aura,
