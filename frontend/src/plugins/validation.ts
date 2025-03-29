@@ -13,7 +13,7 @@ export function useValidation() {
     return (field.$errors?.[0]?.$message || field.$message?.[0]?.[0] || '') as string
   }
 
-  const { createI18nMessage, helpers } = validators
+  const { createI18nMessage } = validators
   const withI18nMessage = createI18nMessage({ t: i18n.t.bind(i18n) })
 
   const required = withI18nMessage(validators.required)

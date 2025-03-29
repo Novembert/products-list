@@ -6,6 +6,7 @@
     <main class="p-4">
       <h2
         v-if="breadcrumb"
+        data-testid="breadcrumbs"
         class="mb-4 font-medium text-gray-500"
       >
         {{ t(breadcrumb) }}

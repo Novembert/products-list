@@ -7,7 +7,6 @@
       {{ t('productsForSale.editOrDeleteProductDialog.title') }}
     </template>
     <ProductForm
-      v-if="updatedProduct"
       v-model="updatedProduct"
     />
     <template #footer>

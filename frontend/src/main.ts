@@ -2,7 +2,7 @@ import '@/assets/main.css'
 
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
-import { usePrimeVue } from './plugins/primeVue/primeVue'
+import { usePrimeVue } from './plugins/primeVue'
 
 import App from './app/App.vue'
 import router from './router'

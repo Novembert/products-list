@@ -4,6 +4,7 @@
       {{ props.label }}
       <span
         v-if="props.required"
+        data-testid="required-indicator"
         class="text-red-500"
         >*</span
       >
@@ -11,6 +12,7 @@
     <slot />
     <p
       v-if="props.error"
+      data-testid="error-message"
       class="text-red-500 text-sm first-letter:capitalize"
     >
       {{ props.error }}
