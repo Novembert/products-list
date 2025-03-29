@@ -42,6 +42,7 @@ import { useI18n } from 'vue-i18n'
 import { deleteProduct, updateProduct } from '@/api/products'
 import { useVuelidate } from '@vuelidate/core'
 import type { Product, UpdateProductPayload } from '@/types/models/Product'
+import { cloneDeep } from 'lodash';
 
 const props = defineProps<{
   product?: Product
@@ -69,7 +70,7 @@ watch(
 
     v$.value.$reset()
     updatedProduct.value = {
-      ...props.product,
+      ...cloneDeep(props.product),
       price: Number(props.product.price),
       vatRate: Number(props.product.vatRate),
     }

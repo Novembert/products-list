@@ -57,7 +57,7 @@ watch(isVisible, () => {
   }
 })
 
-const isSubmitDisabled = computed(() => v$.value.$invalid || !v$.value.$dirty || loading.value)
+const isSubmitDisabled = computed(() => v$.value.$invalid || !v$.value.$anyDirty || loading.value)
 
 const onSubmit = async () => {
   try {
