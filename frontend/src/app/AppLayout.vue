@@ -1,8 +1,6 @@
 <template>
   <div class="bg-gray-50 h-full max-h-full overflow-hidden">
-    <header class="h-[7.5vh] py-2 px-4 bg-white shadow-md flex items-center justify-between">
-      Some menu
-    </header>
+    <AppHeader class="h-[7.5vh]" />
     <main class="p-4 h-[92.5vh] max-h-[92.5vh] flex flex-col">
       <h2
         v-if="breadcrumb"
@@ -17,6 +15,7 @@
 </template>
 
 <script lang="ts" setup>
+import AppHeader from './components/AppHeader.vue'
 import { useI18n } from 'vue-i18n'
 import { useRoute } from 'vue-router'
 

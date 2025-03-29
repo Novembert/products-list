@@ -8,6 +8,10 @@
   "validations": {
     "required": "{property} er påkrævet"
   },
+  "locale": {
+    "en-US": "English",
+    "da-DK": "Dansk"
+  },
   "colors": {
     "red": "Rød",
     "blue": "Blå",
