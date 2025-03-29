@@ -38,7 +38,7 @@ export const errorResponseInterceptor = (error: AxiosError) => {
 axiosInstance.interceptors.request.use(requestInterceptor, (error) => Promise.reject(error))
 axiosInstance.interceptors.response.use(responseInterceptor, errorResponseInterceptor)
 
-export const request = async <T>(config: AxiosRequestConfig<T>): Promise<T> => {
+export const request = async <T>(config: AxiosRequestConfig): Promise<T> => {
   const response = await axiosInstance.request(config)
-  return response.data
+  return response.data.data
 }
