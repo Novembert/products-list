@@ -1,5 +1,4 @@
 import type { CreateProductPayload, Product, UpdateProductPayload } from '@/types/models/Product'
-import { mockProducts } from '../__mocks__/apiData/products'
 import { request } from '@/plugins/apiClient';
 
 export const getProducts = async (): Promise<Product[]> => {
