@@ -43,12 +43,32 @@
       class="w-0 hidden md:table-cell"
       :header="t('productsForSale.products.vatRate')"
     />
+    <Column
+      field="tag"
+      class="w-0 hidden md:table-cell"
+      :header="t('productsForSale.products.tag')"
+    >
+      <template #body="slotProps">
+        <Tag
+          v-if="slotProps.data.tag"
+          :tag="slotProps.data.tag"
+        />
+      </template>
+    </Column>
+    <Column
+      class="w-0"
+    >
+      <template #body>
+        <i class="pi pi-chevron-right"></i>
+      </template>
+    </Column>
   </DataTable>
 </template>
 
 <script setup lang="ts">
 import DataTable from 'primevue/datatable'
 import Column from 'primevue/column'
+import Tag from '@/app/components/Tag.vue'
 import { useI18n } from 'vue-i18n'
 import { computed } from 'vue'
 import type { DataTableRowSelectEvent, DataTableRowReorderEvent } from 'primevue/datatable'
