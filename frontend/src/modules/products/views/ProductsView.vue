@@ -3,6 +3,7 @@
     <CreateProductDialog @success="fetchProducts" />
   </div>
   <ProductsTable
+    class="!h-auto"
     :products="products"
     :loading="loading"
     @product-selected="(product: Product) => (selectedProduct = product)"

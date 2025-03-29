@@ -15,8 +15,11 @@ export const usePrimeVue = (app: App) => {
         header: 'px-4 pt-2',
       },
       datatable: {
+        root: 'rounded-lg border border-gray-200 bg-white overflow-hidden',
+        tablecontainer: 'px-3',
         tbody: '[&_tr.body-row:last-child_>_td]:!border-b-0',
         bodyRow: 'body-row',
+        header: '!border-none'
       },
     },
     theme: {
