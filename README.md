@@ -1,66 +1,89 @@
-# OnlinePOS Recruitment Task
+# OnlinePOS Recruitment Task  
 
-## Live demo
+## Live Demo  
 
-https://frontend-production-5cd0.up.railway.app/#/products
+[Live Demo](https://frontend-production-5cd0.up.railway.app/#/products)  
 
-## Assumptions
+## Assumptions  
 
-In this project I assumed that active user is already logged in as a user of type Restaurant Owner. 
+In this project, I assumed that the active user is already logged in as a user of type **Restaurant Owner**.  
 
-## UI Design decisions
+## UI Design Decisions  
 
-The table design is a bit off, comparing to the UI design shared by OnlinePOS. This is because there is a little bug in PrimeVue's DataTable component, which makes it impossible to drag and drop table rows using touch screens. Therefore, I decided to change the mobile design a bit, making it possible to re-order list elements on mobile devides. 
+The table design slightly differs from the UI design provided by OnlinePOS. This is due to a bug in PrimeVue’s `DataTable` component, which prevents dragging and dropping table rows on touch screens. To address this, I adjusted the mobile design to enable reordering list elements on mobile devices.  
 
 Unfortunately, I spotted this issue a bit too late. Therefore, I didn't manage to cover the re-ordering functionality with unit tests. Anyway, the overall tests coverage of this project is just enough to show that I am capable of writing tests. 
 
-## Local Development
+## Local Development  
 
-### Prerequsities
+### Prerequisites  
 
-- node (minimal version v22.14.0)
-- npm (minimal version v10.9.2)
-- WSL2 (Only if you're using Windows)
-- Docker
-- php
-- composer
+- **Node.js** (minimum version: v22.14.0)  
+- **npm** (minimum version: v10.9.2)  
+- **WSL2** (Only if using Windows)  
+- **Docker**  
+- **PHP**  
+- **Composer**  
 
-### Steps to complete for Local Development
+### Steps for Local Development  
 
-In order to continue development locally, you'll need to follow the steps below:
+#### 1. Backend Setup  
 
-1. Backend development
+1.1. Open a terminal in the root of this repository.  
+1.2. Navigate to the backend directory:  
+```bash
+cd backend
+```
+1.3. Copy the `.env.example` file and rename the copy to `.env`:  
+```bash
+cp .env.example .env
+```
+1.4. Generate a Laravel application key (you can use an online generator or run the command below).  
+1.5. Install dependencies:  
+```bash
+composer install
+```
+1.6. Generate the application key and set it in your `.env` file:  
+```bash
+php artisan key:generate
+```
+Copy the generated key and paste it as the value of the `APP_KEY` variable in your backend `.env` file.  
 
-    1.1 Open terminal in the root of this repository
+1.7. (Windows only) Open your **WSL2 terminal** and ensure you are in the `/backend` directory.  
+1.8. Start the application using Docker:  
+```bash
+./vendor/bin/sail up -d
+```
+1.9. Run database migrations and seed the database:  
+```bash
+./vendor/bin/sail artisan migrate:fresh --seed
+```
 
-    1.2 Run `cd backend`
+---
 
-    1.3. copy file `/backend/.env.example`, and rename the copy to `/backend/.env`
+#### 2. Frontend Setup  
 
-    1.4. generate laravel app key (you can use this website )
+2.1. Open a terminal in the root of this repository.  
+2.2. Navigate to the frontend directory:  
+```bash
+cd frontend
+```
+2.3. Install dependencies:  
+```bash
+npm ci
+```
+2.4. Copy the `.env.example` file and rename the copy to `.env`:  
+```bash
+cp .env.example .env
+```
+2.5. Start the development server:  
+```bash
+npm run dev
+```
+2.6. Open the link displayed in the terminal output, e.g., `http://localhost:5174/`.  
 
-    1.5. run `composer install`
+---
 
-    1.6. run `php artisan key:generate`, copy the generated key and paste it to `APP_KEY` env variable in your backend .env file
+Cheers!  
 
-    1.7. (If you're on Windows computer) Open WSL2 terminal, and make sure you're in `/backend` location
-
-    1.8. run `./vendor/bin/sail up -d`
-
-    1.9. run `./vendor/bin/sail artisan migrate:fresh --seed`
-
-2. Frontend development
-
-    2.1. Open terminal in the root of this repository 
-
-    2.2. Run `cd frontend`
-
-    2.3. Run `npm ci`
-
-    2.4. copy file `/frontend/.env.example`, and rename the copy to `/frontend/.env`
-
-    2.5. Run `npm run dev`
-
-    2.6. Open the link shown in latest command's results, e.g. `http://localhost:5174/`
-
-Cheers!
+---
