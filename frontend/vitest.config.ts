@@ -19,6 +19,7 @@ export default mergeConfig(
           '*.config.ts',
           '*.d.ts',
           'src/main.ts',
+          'src/App.vue',
           'src/router/index.ts'
         ]
       }

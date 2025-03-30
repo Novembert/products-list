@@ -12,6 +12,8 @@ In this project I assumed that active user is already logged in as a user of typ
 
 The table design is a bit off, comparing to the UI design shared by OnlinePOS. This is because there is a little bug in PrimeVue's DataTable component, which makes it impossible to drag and drop table rows using touch screens. Therefore, I decided to change the mobile design a bit, making it possible to re-order list elements on mobile devides. 
 
+Unfortunately, I spotted this issue a bit too late. Therefore, I didn't manage to cover the re-ordering functionality with unit tests. Anyway, the overall tests coverage of this project is just enough to show that I am capable of writing tests. 
+
 ## Local Development
 
 ### Prerequsities
