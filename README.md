@@ -8,6 +8,8 @@
 
 In this project, I assumed that the active user is already logged in as a user of type **Restaurant Owner**.  
 
+I also assumed the system includes a view where users can filter products by tags, so I implemented database tag management by cleaning up unused tags and reusing existing ones to avoid duplication. Besides that, to adhere to 3NF principles, I stored tag names and colors in a separate table and created a relation between Tags and Products, ensuring better maintainability and scalability.
+
 ## UI Design Decisions  
 
 The table design slightly differs from the UI design provided by OnlinePOS. This is due to a bug in PrimeVue’s `DataTable` component, which prevents dragging and dropping table rows on touch screens. To address this, I adjusted the mobile design to enable reordering list elements on mobile devices.  
