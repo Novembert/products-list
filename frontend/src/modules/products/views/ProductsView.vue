@@ -7,6 +7,7 @@
     :products="products"
     :loading="loading"
     @product-selected="(product: Product) => (selectedProduct = product)"
+    @row-reorder="onRowReorder"
   />
   <EditOrDeleteProductDialog
     :product="selectedProduct"
@@ -20,9 +21,9 @@ import CreateProductDialog from '../components/CreateProductDialog.vue'
 import EditOrDeleteProductDialog from '../components/EditOrDeleteProductDialog.vue'
 import ProductsTable from '../components/ProductsTable.vue'
 import { onBeforeMount } from 'vue'
-import type { Product } from '@/types/models/Product'
+import type { Product, updateProductPositionPayload } from '@/types/models/Product'
 import { ref } from 'vue'
-import { getProducts } from '@/api/products'
+import { getProducts, updateProductPosition } from '@/api/products'
 
 const products = ref<Product[]>([])
 const selectedProduct = ref<Product | undefined>()
@@ -31,6 +32,16 @@ const loading = ref(false)
 const onEditOrDeleteProductSuccess = () => {
   selectedProduct.value = undefined
   fetchProducts()
+}
+
+const onRowReorder = async (event: updateProductPositionPayload) => {
+  try {
+    loading.value = true
+    await updateProductPosition(event)
+    await fetchProducts()
+  } finally {
+    loading.value = false
+  }
 }
 
 const fetchProducts = async () => {

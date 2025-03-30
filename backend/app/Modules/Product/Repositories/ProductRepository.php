@@ -12,7 +12,7 @@ class ProductRepository
    */
   public function getAllProducts(): Collection
   {
-    return Product::with('tag')->get();
+    return Product::with('tag')->orderBy('position')->get();
   }
 
   /**
@@ -21,6 +21,11 @@ class ProductRepository
   public function getProduct(int $id): ?Product
   {
     return Product::with('tag')->find($id);
+  }
+
+  public function getNthProduct(int $position): ?Product
+  {
+    return $this->getAllProducts()[$position] ?? null;
   }
 
   /**

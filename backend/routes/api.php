@@ -13,5 +13,6 @@ Route::controller(ProductController::class)->group(function () {
     Route::get('/products/{productId}', 'getProduct');
     Route::post('/products', 'createProduct');
     Route::put('/products/{productId}', 'updateProduct');
+    Route::patch('/products/{productId}/position', 'updateProductPosition');
     Route::delete('/products/{productId}', 'deleteProduct');
 });

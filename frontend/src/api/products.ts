@@ -1,4 +1,4 @@
-import type { CreateProductPayload, Product, UpdateProductPayload } from '@/types/models/Product'
+import type { CreateProductPayload, Product, UpdateProductPayload, updateProductPositionPayload } from '@/types/models/Product'
 import { request } from '@/plugins/apiClient'
 
 export const getProducts = async (): Promise<Product[]> => {
@@ -30,6 +30,15 @@ export const updateProduct = async (product: UpdateProductPayload): Promise<Prod
     data: product,
   })
 }
+
+export const updateProductPosition = async (data: updateProductPositionPayload): Promise<void> => {
+  const { id, ...positions } = data;
+  return await request({
+    method: 'patch',
+    url: `/products/${data.id}/position`,
+    data: positions
+  });
+};
 
 export const deleteProduct = async (id: number): Promise<void> => {
   return await request({

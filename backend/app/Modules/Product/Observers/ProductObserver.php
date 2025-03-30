@@ -11,9 +11,12 @@ class ProductObserver
 
     public function __construct(protected TagRepository $tagRepository) {}
         
-    /**
-     * Handle the Product "updated" event.
-     */
+    // public function creating(Product $product): void
+    // {
+    //     $maxValue = Product::max('position') ?? 0;
+    //     $product->position = $maxValue + 1;
+    // }
+
     public function updating(Product $product): void
     {
         if (!$product->isDirty('tag_id')) {
@@ -27,9 +30,6 @@ class ProductObserver
         }
     }
 
-    /**
-     * Handle the Product "deleted" event.
-     */
     public function deleted(Product $product): void
     {
         $tag = $product->tag_id ? Tag::find($product->tag_id) : null;

@@ -18,6 +18,7 @@ return new class extends Migration
             $table->decimal('price', 8, 2);
             $table->decimal('vat_rate', 3, 2)->check('vat_rate >= 0.00 AND vat_rate <= 1.00');
             $table->float('position')->default(0);
+            $table->index('position', 'position-index');
             $table->foreignId('tag_id')->nullable()->constrained('tags')->nullOnDelete();
             $table->timestamps();
         });

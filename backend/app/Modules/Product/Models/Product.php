@@ -29,14 +29,4 @@ class Product extends Model
     {
         return $this->belongsTo(Tag::class);
     }    
-
-    protected static function booted()
-    {
-        static::creating(function ($product) {
-            if (is_null($product->position)) {
-                $maxPosition = static::max('position') ?? 0;
-                $product->position = $maxPosition + 1;
-            }
-        });
-    }
 }

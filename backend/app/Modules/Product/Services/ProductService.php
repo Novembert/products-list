@@ -9,6 +9,7 @@ use App\Modules\Product\Exceptions\ProductNotFoundException;
 use App\Modules\Product\Models\Product;
 use App\Modules\Product\DTOs\FindOrCreateTag\FindOrCreateTagDTO;
 use App\Modules\Product\DTOs\UpdateProduct\UpdateProductDTO;
+use App\Modules\Product\DTOs\UpdateProduct\UpdateProductPositionDTO;
 use Illuminate\Support\Facades\DB;
 
 class ProductService
@@ -76,9 +77,44 @@ class ProductService
       }
       
       $this->productRepository->saveProduct($product);
-      // refetch product
       $product = $this->productRepository->getProduct($product->id);
       return $product;
+    });
+  }
+
+  public function updateProductPosition(int $id, UpdateProductPositionDTO $data): void {
+    DB::transaction(function () use ($id, $data) {
+      $product = $this->productRepository->getProduct($id);
+
+      if (!$product) {
+        throw new ProductNotFoundException();
+      }
+
+      $allProducts = $this->productRepository->getAllProducts();
+      $allProductsCount = $allProducts->count();
+      $movingUp = $data->newPosition < $data->oldPosition;
+
+      if ($data->newPosition === 1) {
+        $productAfter = $this->productRepository->getNthProduct(0) ?? null;
+        $product->position = ($productAfter ? $productAfter->position : 0) / 2;
+      } else if ($data->newPosition === $allProductsCount) {
+        $productBefore = $this->productRepository->getNthProduct($allProductsCount - 1) ?? null;
+        $product->position = ($productBefore ? $productBefore->position : 0) + 1;
+      } else if ($movingUp) {
+        $productBefore = $this->productRepository->getNthProduct($data->newPosition - 2) ?? null;
+        $productAfter = $this->productRepository->getNthProduct($data->newPosition - 1) ?? null;
+        $productBeforePosition = $productBefore ? $productBefore->position : 0;
+        $productAfterPosition = $productAfter ? $productAfter->position : 0;
+        $product->position = ($productBeforePosition + $productAfterPosition) / 2;
+      } else {
+        $productBefore = $this->productRepository->getNthProduct($data->newPosition - 1) ?? null;
+        $productAfter = $this->productRepository->getNthProduct($data->newPosition) ?? null;
+        $productBeforePosition = $productBefore ? $productBefore->position : 0;
+        $productAfterPosition = $productAfter ? $productAfter->position : 0;
+        $product->position = ($productBeforePosition + $productAfterPosition) / 2;
+      }
+
+      $this->productRepository->saveProduct($product);
     });
   }
 

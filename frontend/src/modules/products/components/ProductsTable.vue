@@ -70,7 +70,7 @@ import Tag from '@/app/components/Tag.vue'
 import { useI18n } from 'vue-i18n'
 import { computed } from 'vue'
 import type { DataTableRowSelectEvent, DataTableRowReorderEvent } from 'primevue/datatable'
-import type { Product } from '@/types/models/Product'
+import type { Product, updateProductPositionPayload } from '@/types/models/Product'
 
 interface TableItem extends Product {
   product: Product
@@ -83,13 +83,23 @@ const props = defineProps<{
 }>()
 
 const emit = defineEmits<{
-  (e: 'rowReorder', event: DataTableRowReorderEvent): void
+  (e: 'rowReorder', event: updateProductPositionPayload): void
   (e: 'productSelected', event: Product): void
 }>()
 
 const { t } = useI18n()
 
-const onRowReorder = (event: DataTableRowReorderEvent) => {}
+const onRowReorder = (event: DataTableRowReorderEvent) => {
+  const reorderedProduct = event.value[event.dropIndex];
+  if (event.dragIndex === event.dropIndex) {
+    return;
+  }
+  emit('rowReorder', {
+    id: reorderedProduct.id,
+    oldPosition: event.dragIndex + 1,
+    newPosition: event.dropIndex + 1
+  })
+}
 
 const onRowSelect = (event: DataTableRowSelectEvent<TableItem>) => {
   emit('productSelected', event.data.product)

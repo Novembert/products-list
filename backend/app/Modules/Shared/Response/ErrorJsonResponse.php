@@ -15,7 +15,6 @@ class ErrorJsonResponse extends JsonResponse
         parent::__construct([
             'error' => [
                 'message' => $message,
-                'code' => $statusCode,
             ],
         ], $statusCode, $headers, $options);
     }
