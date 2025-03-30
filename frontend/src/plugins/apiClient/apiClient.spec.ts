@@ -1,5 +1,5 @@
 import { describe, expect, it, vi } from 'vitest'
-import { requestInterceptor, responseInterceptor, axiosInstance, request } from './apiClient'
+import { requestInterceptor, responseInterceptor, axiosInstance, request } from '.'
 import { type AxiosResponse, type InternalAxiosRequestConfig } from 'axios'
 
 describe('apiClient', () => {

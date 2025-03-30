@@ -1,5 +1,6 @@
+import type { ApiError } from '@/types/models/ApiError'
+import { useDisplayErrorMessage } from '@/utils/errorMessage'
 import axios, {
-  type AxiosError,
   type AxiosRequestConfig,
   type AxiosResponse,
   type InternalAxiosRequestConfig,
@@ -24,18 +25,13 @@ export const requestInterceptor = (config: InternalAxiosRequestConfig) => {
 
 export const responseInterceptor = (response: AxiosResponse) => response
 
-export const errorResponseInterceptor = (error: AxiosError) => {
-  // temporary
-  console.error('Error response interceptor', error)
-
+export const errorResponseInterceptor = (error: ApiError) => {
+  const displayErrorMessage = useDisplayErrorMessage();
   if (error.response) {
-    // handle error response
+    displayErrorMessage(error.response.data.error.code);
+    return Promise.reject();
   }
-  if (error.request) {
-    // handle no response
-  }
-
-  // Request not made at all
+  Promise.reject(error);
 }
 
 axiosInstance.interceptors.request.use(requestInterceptor, (error) => Promise.reject(error))

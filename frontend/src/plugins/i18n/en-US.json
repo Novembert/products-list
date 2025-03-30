@@ -5,6 +5,11 @@
     "delete": "Delete",
     "save": "Save"
   },
+  "errors": {
+    "UNKNOWN_ERROR": "An unknown error occurred",
+    "PRODUCT_NOT_FOUND": "Product not found",
+    "UNAUTHENTICATED": "You are not authenticated"
+  },
   "validations": {
     "required": "{property} is required"
   },

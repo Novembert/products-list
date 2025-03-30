@@ -19,6 +19,7 @@ use Illuminate\Http\Response;
 use App\Modules\Product\Exceptions\ProductNotFoundException;
 use App\Modules\Product\Requests\UpdateProductPositionRequest;
 use App\Modules\Shared\Controllers\Controller;
+use App\Modules\Shared\Enums\ErrorCode;
 
 class ProductController extends Controller
 {
@@ -42,6 +43,7 @@ class ProductController extends Controller
             return new ErrorJsonResponse(
                 message: 'Product not found',
                 statusCode: Response::HTTP_NOT_FOUND,
+                errorCode: ErrorCode::PRODUCT_NOT_FOUND
             );
         }
     }
@@ -91,6 +93,7 @@ class ProductController extends Controller
             return new ErrorJsonResponse(
                 message: 'Product not found',
                 statusCode: Response::HTTP_NOT_FOUND,
+                errorCode: ErrorCode::PRODUCT_NOT_FOUND
             );
         }
     }
@@ -109,6 +112,7 @@ class ProductController extends Controller
             return new ErrorJsonResponse(
                 message: 'Product not found',
                 statusCode: Response::HTTP_NOT_FOUND,
+                errorCode: ErrorCode::PRODUCT_NOT_FOUND
             );
         }
     }
@@ -125,6 +129,7 @@ class ProductController extends Controller
             return new ErrorJsonResponse(
                 message: 'Product not found',
                 statusCode: Response::HTTP_NOT_FOUND,
+                errorCode: ErrorCode::PRODUCT_NOT_FOUND
             );
         }
     }

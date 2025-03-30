@@ -5,6 +5,11 @@
     "delete": "Slet",
     "save": "Gem"
   },
+  "errors": {
+    "UNKNOWN_ERROR": "Der opstod en ukendt fejl",
+    "PRODUCT_NOT_FOUND": "Produkt ikke fundet",
+    "UNAUTHENTICATED": "Du er ikke godkendt"
+  },
   "validations": {
     "required": "{property} er påkrævet"
   },
