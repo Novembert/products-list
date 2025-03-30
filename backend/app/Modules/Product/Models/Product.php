@@ -28,5 +28,5 @@ class Product extends Model
     public function tag()
     {
         return $this->belongsTo(Tag::class);
-    }    
+    }
 }

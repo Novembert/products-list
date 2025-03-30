@@ -7,32 +7,37 @@ use Illuminate\Support\Collection;
 
 class ProductRepository
 {
-  /**
-   * @return Collection<Product>
-   */
-  public function getAllProducts(): Collection
-  {
-    return Product::with('tag')->get();
-  }
+    /**
+     * @return Collection<Product>
+     */
+    public function getAllProducts(): Collection
+    {
+        return Product::with('tag')->orderBy('position')->get();
+    }
 
-  /**
-   * @return Product
-   */
-  public function getProduct(int $id): ?Product
-  {
-    return Product::with('tag')->find($id);
-  }
+    /**
+     * @return Product
+     */
+    public function getProduct(int $id): ?Product
+    {
+        return Product::with('tag')->find($id);
+    }
 
-  /**
-   * @return Product
-   */
-  public function saveProduct(Product $product): void
-  {
-    $product->save();
-  }
+    public function getNthProduct(int $position): ?Product
+    {
+        return $this->getAllProducts()[$position] ?? null;
+    }
 
-  public function deleteProduct(Product $product): void
-  {
-    $product->delete();
-  }
+    /**
+     * @return Product
+     */
+    public function saveProduct(Product $product): void
+    {
+        $product->save();
+    }
+
+    public function deleteProduct(Product $product): void
+    {
+        $product->delete();
+    }
 }

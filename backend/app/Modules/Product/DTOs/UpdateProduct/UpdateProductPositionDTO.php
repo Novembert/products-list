@@ -2,11 +2,11 @@
 
 namespace App\Modules\Product\DTOs\UpdateProduct;
 
-readonly class TagDTO
+readonly class UpdateProductPositionDTO
 {
     public function __construct(
-        public string $name,
-        public string $color,
+        public int $oldPosition,
+        public int $newPosition
     ) {
     }
 }

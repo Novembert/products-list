@@ -8,22 +8,24 @@ use App\Modules\Product\Repositories\TagRepository;
 
 class TagService
 {
-    public function __construct(protected TagRepository $tagRepository) {}
+    public function __construct(protected TagRepository $tagRepository)
+    {
+    }
 
     public function findOrCreateTag(FindOrCreateTagDTO $tagDTO): Tag
     {
-      $tag = $this->tagRepository->getTagByNameAndColor(
-          $tagDTO->name,
-          $tagDTO->color
-      );
+        $tag = $this->tagRepository->getTagByNameAndColor(
+            $tagDTO->name,
+            $tagDTO->color
+        );
 
-      if (!$tag) {
-        $tag = new Tag();
-        $tag->name = $tagDTO->name;
-        $tag->color = $tagDTO->color;
+        if (!$tag) {
+            $tag = new Tag();
+            $tag->name = $tagDTO->name;
+            $tag->color = $tagDTO->color;
 
-        $this->tagRepository->saveTag($tag);
-      }
-      return $tag;
+            $this->tagRepository->saveTag($tag);
+        }
+        return $tag;
     }
 }

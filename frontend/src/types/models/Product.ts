@@ -27,3 +27,9 @@ export type UpdateProductPayload = CreateProductPayload & {
   createdAt: string
   updatedAt: string
 }
+
+export interface updateProductPositionPayload {
+  id: number
+  newPosition: number;
+  oldPosition: number;
+}

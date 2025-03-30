@@ -16,12 +16,12 @@ class ProductSeeder extends Seeder
         $tags = Tag::all();
 
         Product::factory()
-            ->count(10)
+            ->count(15)
             ->create()
             ->each(function ($product) use ($tags) {
                 if ($tags->isNotEmpty()) {
-                    $tag = $tags->random(); 
-                    $product->tag_id = $tag->id; 
+                    $tag = $tags->random();
+                    $product->tag_id = $tag->id;
                     $product->save();
                 }
             });

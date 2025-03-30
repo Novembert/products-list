@@ -10,12 +10,14 @@ use App\Modules\Product\DTOs\CreateProduct\CreateProductDTO;
 use App\Modules\Product\DTOs\UpdateProduct\TagDTO as UpdateProductTagDTO;
 use App\Modules\Product\DTOs\CreateProduct\TagDTO as CreateProductTagDTO;
 use App\Modules\Product\DTOs\UpdateProduct\UpdateProductDTO;
+use App\Modules\Product\DTOs\UpdateProduct\UpdateProductPositionDTO;
 use App\Modules\Product\Services\ProductService;
 use App\Modules\Product\Services\TagService;
 use App\Modules\Shared\Response\ErrorJsonResponse;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Response;
 use App\Modules\Product\Exceptions\ProductNotFoundException;
+use App\Modules\Product\Requests\UpdateProductPositionRequest;
 use App\Modules\Shared\Controllers\Controller;
 
 class ProductController extends Controller
@@ -23,7 +25,9 @@ class ProductController extends Controller
     /**
      * The controller constructor.
      */
-    public function __construct(protected ProductService $productService, protected TagService $tagService) {}
+    public function __construct(protected ProductService $productService, protected TagService $tagService)
+    {
+    }
 
     public function getAllProducts()
     {
@@ -79,10 +83,28 @@ class ProductController extends Controller
                     color: $request->tag['color'],
                 )) : null,
             );
-    
+
             return new ProductResource(
                 $this->productService->updateProduct($productId, $productDTO)->loadMissing('tag')
             );
+        } catch (ProductNotFoundException $e) {
+            return new ErrorJsonResponse(
+                message: 'Product not found',
+                statusCode: Response::HTTP_NOT_FOUND,
+            );
+        }
+    }
+
+    public function updateProductPosition(UpdateProductPositionRequest $request, int $productId)
+    {
+        try {
+            $productPositionDTO = new UpdateProductPositionDTO(
+                newPosition: $request->newPosition,
+                oldPosition: $request->oldPosition,
+            );
+
+            $this->productService->updateProductPosition($productId, $productPositionDTO);
+            return new JsonResponse(null, Response::HTTP_NO_CONTENT);
         } catch (ProductNotFoundException $e) {
             return new ErrorJsonResponse(
                 message: 'Product not found',
