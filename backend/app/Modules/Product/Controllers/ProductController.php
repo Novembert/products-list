@@ -25,7 +25,9 @@ class ProductController extends Controller
     /**
      * The controller constructor.
      */
-    public function __construct(protected ProductService $productService, protected TagService $tagService) {}
+    public function __construct(protected ProductService $productService, protected TagService $tagService)
+    {
+    }
 
     public function getAllProducts()
     {
@@ -81,7 +83,7 @@ class ProductController extends Controller
                     color: $request->tag['color'],
                 )) : null,
             );
-    
+
             return new ProductResource(
                 $this->productService->updateProduct($productId, $productDTO)->loadMissing('tag')
             );
@@ -93,12 +95,12 @@ class ProductController extends Controller
         }
     }
 
-    public function updateProductPosition(UpdateProductPositionRequest $request, int $productId) {
+    public function updateProductPosition(UpdateProductPositionRequest $request, int $productId)
+    {
         try {
             $productPositionDTO = new UpdateProductPositionDTO(
                 newPosition: $request->newPosition,
                 oldPosition: $request->oldPosition,
-
             );
 
             $this->productService->updateProductPosition($productId, $productPositionDTO);

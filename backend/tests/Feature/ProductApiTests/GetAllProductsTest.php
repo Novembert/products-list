@@ -14,7 +14,7 @@ class GetAllProductsTest extends FeatureTestCase
         Product::factory()
             ->count(5)
             ->create(['tag_id' => $tag->id]);
-    
+
         $response = $this->getJson('/api/products');
 
         $response->assertStatus(200)
@@ -39,7 +39,7 @@ class GetAllProductsTest extends FeatureTestCase
         Product::factory()
             ->count(5)
             ->create();
-    
+
         $response = $this->getJson('/api/products');
 
         $response->assertStatus(200)

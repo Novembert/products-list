@@ -8,42 +8,42 @@ use Tests\Feature\FeatureTestCase;
 
 class DeleteProductTest extends FeatureTestCase
 {
-  public function testDeletesProduct(): void
-  {
-      $product = Product::factory()->create();
+    public function testDeletesProduct(): void
+    {
+        $product = Product::factory()->create();
 
-      $response = $this->deleteJson("/api/products/{$product->id}");
+        $response = $this->deleteJson("/api/products/{$product->id}");
 
-      $response->assertStatus(204);
+        $response->assertStatus(204);
 
-      $this->assertDatabaseMissing('products', [
-          'id' => $product->id,
-      ]);
-  }
+        $this->assertDatabaseMissing('products', [
+            'id' => $product->id,
+        ]);
+    }
 
-  public function testDeletesTagIfItIsNoLongerUsedAfterProductGetsDeleted(): void
-  {
-      $tag = Tag::factory()->create();
-      $product = Product::factory()->create(['tag_id' => $tag->id]);
+    public function testDeletesTagIfItIsNoLongerUsedAfterProductGetsDeleted(): void
+    {
+        $tag = Tag::factory()->create();
+        $product = Product::factory()->create(['tag_id' => $tag->id]);
 
-      $response = $this->deleteJson("/api/products/{$product->id}");
+        $response = $this->deleteJson("/api/products/{$product->id}");
 
-      $response->assertStatus(204);
+        $response->assertStatus(204);
 
-      $this->assertDatabaseMissing('tags', [
-          'id' => $tag->id,
-      ]);
-  }
+        $this->assertDatabaseMissing('tags', [
+            'id' => $tag->id,
+        ]);
+    }
 
-  public function testReturnsError404IfProductDoesNotExist(): void
-  {
-      $response = $this->deleteJson('/api/products/9999');
+    public function testReturnsError404IfProductDoesNotExist(): void
+    {
+        $response = $this->deleteJson('/api/products/9999');
 
-      $response->assertStatus(404)
-          ->assertJson([
-            'error' => [
-              'message' => 'Product not found',
-            ]
-          ]);
-  } 
+        $response->assertStatus(404)
+            ->assertJson([
+              'error' => [
+                'message' => 'Product not found',
+              ]
+            ]);
+    }
 }

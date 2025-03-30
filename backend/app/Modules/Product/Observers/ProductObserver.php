@@ -8,9 +8,10 @@ use App\Modules\Product\Repositories\TagRepository;
 
 class ProductObserver
 {
+    public function __construct(protected TagRepository $tagRepository)
+    {
+    }
 
-    public function __construct(protected TagRepository $tagRepository) {}
-        
     // public function creating(Product $product): void
     // {
     //     $maxValue = Product::max('position') ?? 0;

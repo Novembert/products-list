@@ -118,13 +118,13 @@ class UpdateProductTest extends FeatureTestCase
             'price' => 200.50
         ];
 
-      $response = $this->putJson("/api/products/99999", $requestData);
-  
-      $response->assertStatus(404)
-        ->assertJson([
-            'error' => [
-            'message' => 'Product not found',
-            ]
-        ]);
-    } 
+        $response = $this->putJson("/api/products/99999", $requestData);
+
+        $response->assertStatus(404)
+          ->assertJson([
+              'error' => [
+              'message' => 'Product not found',
+              ]
+          ]);
+    }
 }
