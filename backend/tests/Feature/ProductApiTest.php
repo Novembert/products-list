@@ -2,18 +2,12 @@
 
 namespace Tests\Feature;
 
-use App\Http\Resources\ProductCollection;
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
-use Tests\TestCase;
-use App\Models\Product;
-use App\Models\Tag;
+use App\Modules\Product\Models\Product;
+use App\Modules\Product\Models\Tag;
 
-class ProductApiTest extends TestCase
+class ProductApiTest extends FeatureTestCase
 {
-    use RefreshDatabase;
-
-    public function test_returns_all_products_with_tags(): void
+    public function testReturnsAllProductsWithTags(): void
     {
         $tag = Tag::factory()->create();
         Product::factory()
@@ -39,7 +33,7 @@ class ProductApiTest extends TestCase
             ]);
     }
 
-    public function test_returns_products_without_tags_if_products_dont_have_them(): void
+    public function testReturnsProductsWithoutTagsIfProductsDontHaveThem(): void
     {
         Product::factory()
             ->count(5)
@@ -63,7 +57,7 @@ class ProductApiTest extends TestCase
             ]);
     }
 
-    public function test_returns_specific_product_details(): void
+    public function testReturnsSpecificProductDetails(): void
     {
         $tag = Tag::factory()->create();
         $product = Product::factory()->create(['tag_id' => $tag->id]);
@@ -85,7 +79,7 @@ class ProductApiTest extends TestCase
             ]);
     }
 
-    public function test_creates_and_returns_new_product(): void
+    public function testCreatesAndReturnsNewProduct(): void
     {
         // Arrange: Create JSON request data
         $requestData = [
@@ -124,13 +118,13 @@ class ProductApiTest extends TestCase
         $this->assertDatabaseHas('products', [
             'name' => 'Test Product',
             'description' => 'This is a test product.',
-            'vat_rate' => 0.11,
-            'price' => 100.50,
+            'vat_rate' => '0.11',
+            'price' => '100.50',
             'tag_id' => $response['data']['tag']['id'],
         ]);
     }
 
-    public function test_reuses_existing_tag_when_creating_product_with_equal_tag(): void
+    public function testReusesExistingTagWhenCreatingProductWithEqualTag(): void
     {
         $tag = Tag::factory()->create();
 
@@ -167,13 +161,13 @@ class ProductApiTest extends TestCase
         $this->assertDatabaseHas('products', [
             'name' => 'Test Product',
             'description' => 'This is a test product.',
-            'vat_rate' => 0.11,
-            'price' => 100.50,
+            'vat_rate' => '0.11',
+            'price' => '100.50',
             'tag_id' => $tag->id,
         ]);
     }
 
-    public function test_does_not_create_tag_if_no_tag_data_is_passed(): void
+    public function testDoesNotCreateTagIfNoTagDataIsPassed(): void
     {
         $requestData = [
             'name' => 'Test Product',
@@ -207,7 +201,7 @@ class ProductApiTest extends TestCase
         $this->assertDatabaseCount('tags', 0);
     }
 
-    public function test_deletes_product(): void
+    public function testDeletesProduct(): void
     {
         $product = Product::factory()->create();
 
@@ -220,7 +214,7 @@ class ProductApiTest extends TestCase
         ]);
     }
 
-    public function test_deletes_tag_if_it_is_no_longer_used_after_product_gets_deleted(): void
+    public function testDeletesTagIfItIsNoLongerUsedAfterProductGetsDeleted(): void
     {
         $tag = Tag::factory()->create();
         $product = Product::factory()->create(['tag_id' => $tag->id]);
@@ -234,7 +228,7 @@ class ProductApiTest extends TestCase
         ]);
     }
 
-    public function test_updates_tag_and_returns_its_new_data(): void
+    public function testUpdatesTagAndReturnsItsNewData(): void
     {
         $tag = Tag::factory()->create();
         $product = Product::factory()->create(['tag_id' => $tag->id]);
@@ -273,13 +267,13 @@ class ProductApiTest extends TestCase
             'id' => $product->id,
             'name' => 'Updated Product',
             'description' => 'This is an updated product.',
-            'vat_rate' => 0.22,
-            'price' => 200.50,
+            'vat_rate' => '0.22',
+            'price' => '200.50',
             'tag_id' => $response['data']['tag']['id'],
         ]);
     }
 
-    public function test_deletes_tag_if_it_is_no_longer_used_after_product_gets_updated(): void
+    public function testDeletesTagIfItIsNoLongerUsedAfterProductGetsUpdated(): void
     {
         $tag = Tag::factory()->create();
         $product = Product::factory()->create(['tag_id' => $tag->id]);
@@ -311,7 +305,7 @@ class ProductApiTest extends TestCase
         ]);
     }
 
-    public function test_does_not_delete_tag_if_it_is_still_used_after_product_gets_updated(): void
+    public function testDoesNotDeleteTagIfItIsStillUsedAfterProductGetsUpdated(): void
     {
         $tag = Tag::factory()->create();
         $product = Product::factory()->create(['tag_id' => $tag->id]);

@@ -1,7 +1,6 @@
 <?php
 
-use App\Http\Controllers\ProductController;
-use App\Http\Controllers\TagController;
+use App\Modules\Product\Controllers\ProductController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -9,8 +8,10 @@ Route::get('/user', function (Request $request) {
     return $request->user();
 })->middleware('auth:sanctum');
 
-Route::get('/products', [ProductController::class, 'index']);
-Route::get('/products/{product}', [ProductController::class, 'show']);
-Route::post('/products', [ProductController::class, 'store']);
-Route::put('/products/{product}', [ProductController::class, 'update']);
-Route::delete('/products/{product}', [ProductController::class, 'destroy']);
+Route::controller(ProductController::class)->group(function () {
+    Route::get('/products', 'getAllProducts');
+    Route::get('/products/{productId}', 'getProduct');
+    Route::post('/products', 'createProduct');
+    Route::put('/products/{productId}', 'updateProduct');
+    Route::delete('/products/{productId}', 'deleteProduct');
+});

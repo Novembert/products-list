@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('tags', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->string('name', 128);
             $table->enum('color', ['red', 'blue', 'green', 'yellow', 'purple', 'orange', 'black']);
             $table->timestamps();
         });

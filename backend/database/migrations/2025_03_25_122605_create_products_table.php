@@ -13,12 +13,11 @@ return new class extends Migration
     {
         Schema::create('products', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->string('name', 128);
             $table->string('description')->nullable();
             $table->decimal('price', 8, 2);
-            $table->decimal('vat_rate', 3, 2)->default(0.00)->check('vat_rate >= 0.00 AND vat_rate <= 1.00');
-            $table->unsignedBigInteger('tag_id')->nullable();
-            $table->foreign('tag_id')->references('id')->on('tags')->onDelete('set null');
+            $table->decimal('vat_rate', 3, 2)->check('vat_rate >= 0.00 AND vat_rate <= 1.00');
+            $table->foreignId('tag_id')->nullable()->constrained('tags')->nullOnDelete();
             $table->timestamps();
         });
     }
