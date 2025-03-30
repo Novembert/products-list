@@ -1,8 +1,9 @@
 <?php
 
-namespace Tests\Feature;
+namespace Tests\Feature\ProductApiTests;
 
 use App\Modules\Product\Models\Product;
+use Tests\Feature\FeatureTestCase;
 
 class UpdateProductPositionTest extends FeatureTestCase
 {

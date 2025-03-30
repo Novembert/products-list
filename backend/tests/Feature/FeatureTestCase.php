@@ -12,6 +12,6 @@ class FeatureTestCase extends TestCase
     protected function setUp(): void
     {
         parent::setUp();
-        $this->withHeader('X-User-Id', 1);
+        $this->withHeader('X-User-Id', 'DUMMY_USER_ID');
     }
 }

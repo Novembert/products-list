@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Feature;
+namespace Tests\Feature\ProductApiTests;
 
 use App\Modules\Product\Models\Product;
 use App\Modules\Product\Models\Tag;

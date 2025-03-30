@@ -11,12 +11,12 @@ class ProductObserver
     public function __construct(protected TagRepository $tagRepository)
     {
     }
-
-    // public function creating(Product $product): void
-    // {
-    //     $maxValue = Product::max('position') ?? 0;
-    //     $product->position = $maxValue + 1;
-    // }
+    
+    public function creating(Product $product): void
+    {
+        $maxValue = Product::max('position') ?? 0;
+        $product->position = $maxValue + 1;
+    }
 
     public function updating(Product $product): void
     {

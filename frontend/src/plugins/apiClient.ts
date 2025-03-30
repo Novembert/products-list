@@ -16,6 +16,9 @@ export const axiosInstance = axios.create({
 export const requestInterceptor = (config: InternalAxiosRequestConfig) => {
   config.headers['Content-Type'] = 'application/json'
   config.headers['Accept'] = 'application/json'
+  // We're setting a mock authorization header here.
+  // In a real application, you would get the token from a store or cookie.
+  config.headers['X-User-Id'] = 'DUMMY_USER_ID'
   return config
 }
 
