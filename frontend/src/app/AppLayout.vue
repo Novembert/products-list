@@ -1,7 +1,7 @@
 <template>
   <div class="bg-gray-50 h-full max-h-full overflow-hidden">
-    <AppHeader class="max-md:h-[7.5vh]" />
-    <main class="p-4 md:p-6 lg:p-8 h-[92.5vh] max-h-[92.5vh] flex flex-col">
+    <AppHeader class="max-md:h-[7.5%]" />
+    <main class="p-4 md:p-6 lg:p-8 h-[92.5%] max-h-[92.5%] flex flex-col">
       <h2
         v-if="breadcrumb"
         data-testid="breadcrumbs"
