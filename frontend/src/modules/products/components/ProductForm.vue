@@ -5,7 +5,10 @@
       required
       :error="getFirstErrorMessage(v$.name)"
     >
-      <InputText v-model="v$.name.$model" />
+      <InputText
+        v-model="v$.name.$model"
+        autofocus
+      />
     </FormField>
     <FormField :label="t('productsForSale.dialogProductProperties.description')">
       <Textarea

@@ -14,7 +14,7 @@ class AuthenticationTest extends FeatureTestCase
       $response->assertStatus(401)
           ->assertJson([
               'error' => [
-                  'message' => 'Unauthenticated.',
+                  'message' => 'Unauthenticated',
               ],
           ]);
     }
