@@ -1,20 +1,22 @@
-# OnlinePOS Recruitment Task  
+# Products list CRUD app
 
-## Live Demo  
+This is a full-stack web application that allows users to manage a list of products via a user-friendly admin interface. It supports essential CRUD operations (Create, Read, Update, Delete) along with drag-and-drop sorting. The app is built as a modular and responsive interface designed for a restaurant or takeaway business to manage its online product offerings.
 
-[Live Demo](https://frontend-production-5cd0.up.railway.app/#/products)  
+## Features
 
-## Assumptions  
+- Create, edit, and delete products
+- Drag-and-drop sorting of product list
+- Product attributes include:
+  - Name
+  - Description
+  - Price
+  - VAT rate
+  - Tag name
+  - Tag color
+- Display of product ID after creation
+- Responsive design for desktop and mobile views
 
-In this project, I assumed that the active user is already logged in as a user of type **Restaurant Owner**.  
-
-I also assumed the system includes a view where users can filter products by tags, so I implemented database tag management by cleaning up unused tags and reusing existing ones to avoid duplication. Besides that, to adhere to 3NF principles, I stored tag names and colors in a separate table and created a relation between Tags and Products, ensuring better maintainability and scalability.
-
-## UI Design Decisions  
-
-The table design slightly differs from the UI design provided by OnlinePOS. This is due to a bug in PrimeVue’s `DataTable` component, which prevents dragging and dropping table rows on touch screens. To address this, I adjusted the mobile design to enable reordering list elements on mobile devices.  
-
-Unfortunately, I spotted this issue a bit too late. Therefore, I didn't manage to cover the re-ordering functionality with unit tests. Anyway, the overall tests coverage of this project is just enough to show that I am capable of writing tests. 
+The frontend is built using **Vue 3**, **PrimeVue**, **Tailwind CSS**, and **TypeScript**. The backend is powered by **Laravel** and uses **MySQL** as the database. All services are containerized using **Docker** for easy setup and consistency across environments.
 
 ## Local Development  
 
